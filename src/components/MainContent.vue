@@ -19,7 +19,7 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from "vue-class-component";
+import { defineComponent } from "vue";
 import FormSearch from "@/components/FormSearch.vue";
 import DocumentList from "@/components/DocumentList.vue";
 import { mapState } from "pinia";
@@ -27,22 +27,22 @@ import { useDocumentStore } from "@/stores/DocumentStore";
 // import { useToast } from "primevue/usetoast";
 // const toast = useToast();
 
-@Options({
+export default defineComponent({
+  name: "MainContent",
   components: {
     FormSearch,
     DocumentList,
   },
   // watch: {
   //   error(value) {
-  //     // const toast = useToast();
-  //     console.log("🚀 ~ error ~ value:", value);
-  //     if (value)
+  //     if (value) {
   //       toast.add({
   //         severity: "error",
   //         summary: "Error Message",
   //         detail: "Message Content",
   //         life: 3000,
   //       });
+  //     }
   //   },
   // },
   computed: {
@@ -52,8 +52,7 @@ import { useDocumentStore } from "@/stores/DocumentStore";
       error: "error",
     }),
   },
-})
-export default class MainContent extends Vue {}
+});
 </script>
 
 <style lang="scss" scoped>
