@@ -1,12 +1,10 @@
 <template>
-  <!-- <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" /> -->
   <MyDashboard />
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-// import HelloWorld from "./components/HelloWorld.vue";
-import MyDashboard from "./components/MyDashboard.vue";
+import MyDashboard from "@/components/MyDashboard.vue";
 // import { useDocumentStore } from "@/stores/DocumentStore";
 // useDocumentStore();
 
