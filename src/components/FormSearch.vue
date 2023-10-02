@@ -14,14 +14,15 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from "vue-class-component";
+import { defineComponent } from "vue";
 import { mapActions } from "pinia";
 import { useDocumentStore } from "@/stores/DocumentStore";
 import { ref } from "vue";
 
 const text = ref();
 
-@Options({
+export default defineComponent({
+  name: "FormSearch",
   data() {
     return {
       text,
@@ -30,8 +31,7 @@ const text = ref();
   methods: {
     ...mapActions(useDocumentStore, ["getDocuments"]),
   },
-})
-export default class FormSearch extends Vue {}
+});
 </script>
 
 <style lang="scss" scoped>

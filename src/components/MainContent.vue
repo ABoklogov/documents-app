@@ -24,8 +24,7 @@ import FormSearch from "@/components/FormSearch.vue";
 import DocumentList from "@/components/DocumentList.vue";
 import { mapState } from "pinia";
 import { useDocumentStore } from "@/stores/DocumentStore";
-// import { useToast } from "primevue/usetoast";
-// const toast = useToast();
+import { useToast } from "primevue/usetoast";
 
 export default defineComponent({
   name: "MainContent",
@@ -33,18 +32,17 @@ export default defineComponent({
     FormSearch,
     DocumentList,
   },
-  // watch: {
-  //   error(value) {
-  //     if (value) {
-  //       toast.add({
-  //         severity: "error",
-  //         summary: "Error Message",
-  //         detail: "Message Content",
-  //         life: 3000,
-  //       });
-  //     }
-  //   },
-  // },
+  updated() {
+    const toast = useToast();
+    if (this.error) {
+      toast.add({
+        severity: "error",
+        summary: "Error Message",
+        detail: this.error,
+        life: 3000,
+      });
+    }
+  },
   computed: {
     ...mapState(useDocumentStore, {
       documents: "documents",

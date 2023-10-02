@@ -6,10 +6,11 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from "vue-class-component";
+import { defineComponent } from "vue";
 
-@Options({})
-export default class MyHeader extends Vue {}
+export default defineComponent({
+  name: "MyHeader",
+});
 </script>
 
 <style lang="scss" scoped>

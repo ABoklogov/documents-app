@@ -6,16 +6,16 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from "vue-class-component";
+import { defineComponent } from "vue";
 
-@Options({
+export default defineComponent({
+  name: "DocumentItem",
   props: {
     document: {
       type: Object,
     },
   },
-})
-export default class DocumentItem extends Vue {}
+});
 </script>
 
 <style lang="scss" scoped>

@@ -3,17 +3,15 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from "vue-class-component";
+import { defineComponent } from "vue";
 import MyDashboard from "@/components/MyDashboard.vue";
-// import { useDocumentStore } from "@/stores/DocumentStore";
-// useDocumentStore();
 
-@Options({
+export default defineComponent({
+  name: "App",
   components: {
     MyDashboard,
   },
-})
-export default class App extends Vue {}
+});
 </script>
 
 <style>

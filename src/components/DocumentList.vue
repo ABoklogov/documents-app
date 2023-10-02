@@ -7,10 +7,11 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from "vue-class-component";
+import { defineComponent } from "vue";
 import DocumentItem from "@/components/DocumentItem.vue";
 
-@Options({
+export default defineComponent({
+  name: "DocumentList",
   components: {
     DocumentItem,
   },
@@ -19,8 +20,7 @@ import DocumentItem from "@/components/DocumentItem.vue";
       type: Array,
     },
   },
-})
-export default class DocumentList extends Vue {}
+});
 </script>
 
 <style lang="scss" scoped>

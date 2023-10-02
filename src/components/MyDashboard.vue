@@ -6,14 +6,15 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from "vue-class-component";
+import { defineComponent } from "vue";
 import MainContent from "@/components/MainContent.vue";
 import MyHeader from "@/components/MyHeader.vue";
 import BaseContainer from "@/components/BaseContainer.vue";
 import { mapActions } from "pinia";
 import { useDocumentStore } from "@/stores/DocumentStore";
 
-@Options({
+export default defineComponent({
+  name: "MyDashboard",
   components: {
     MainContent,
     MyHeader,
@@ -25,8 +26,7 @@ import { useDocumentStore } from "@/stores/DocumentStore";
   methods: {
     ...mapActions(useDocumentStore, ["getDocuments"]),
   },
-})
-export default class MyDashboard extends Vue {}
+});
 </script>
 
 <style lang="scss" scoped>
