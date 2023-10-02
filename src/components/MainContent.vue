@@ -13,7 +13,9 @@
         <DocumentList v-else :documents="documents" />
       </div>
     </div>
-    <div class="content__right"></div>
+    <div class="content__right">
+      <DocumentCard v-if="document" :document="document" />
+    </div>
     <PrimeToast />
   </div>
 </template>
@@ -22,6 +24,7 @@
 import { defineComponent } from "vue";
 import FormSearch from "@/components/FormSearch.vue";
 import DocumentList from "@/components/DocumentList.vue";
+import DocumentCard from "@/components/DocumentCard.vue";
 import { mapState } from "pinia";
 import { useDocumentStore } from "@/stores/DocumentStore";
 import { useToast } from "primevue/usetoast";
@@ -31,6 +34,7 @@ export default defineComponent({
   components: {
     FormSearch,
     DocumentList,
+    DocumentCard,
   },
   updated() {
     const toast = useToast();
@@ -48,6 +52,7 @@ export default defineComponent({
       documents: "documents",
       loading: "loading",
       error: "error",
+      document: "currentDocument",
     }),
   },
 });
@@ -59,20 +64,24 @@ export default defineComponent({
   border-radius: 10px;
   background: #fdfdfd;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
-  height: 574px;
+  height: 850px;
 
   &__left {
     border-right: 1px solid #e0e0e0;
     width: 25%;
     padding: 27px 20px;
   }
-  &__left,
+  &__left {
+    height: 100%;
+  }
   &__document-list,
   &__loader {
-    height: 100%;
+    min-height: 200px;
+    height: 85%;
   }
   &__right {
     width: 75%;
+    padding: 30px;
   }
 }
 </style>

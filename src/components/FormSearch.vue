@@ -2,7 +2,7 @@
   <div>
     <h2>Поиск документа</h2>
     <span class="p-input-icon-right">
-      <i class="pi pi-spin pi-spinner" />
+      <i v-if="loading" class="pi pi-spin pi-spinner" />
       <InputText
         id="search"
         v-model="text"
@@ -13,23 +13,40 @@
   </div>
 </template>
 
+
 <script lang="ts">
 import { defineComponent } from "vue";
-import { mapActions } from "pinia";
+import { mapActions, mapState } from "pinia";
 import { useDocumentStore } from "@/stores/DocumentStore";
-import { ref } from "vue";
+import { ref, Ref } from "vue";
 
 const text = ref();
 
+declare interface State {
+  text: Ref;
+  timer: number | undefined;
+}
+
 export default defineComponent({
   name: "FormSearch",
-  data() {
+  data(): State {
     return {
       text,
+      timer: undefined,
     };
   },
+  watch: {
+    text(query) {
+      clearTimeout(this.timer);
+
+      this.timer = setTimeout(() => this.searchDocuments(query), 800);
+    },
+  },
+  computed: {
+    ...mapState(useDocumentStore, { loading: "loadingSearch" }),
+  },
   methods: {
-    ...mapActions(useDocumentStore, ["getDocuments"]),
+    ...mapActions(useDocumentStore, ["searchDocuments"]),
   },
 });
 </script>

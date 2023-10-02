@@ -6,8 +6,13 @@ async function fetchDocuments() {
   const data = await axios.get('/user/docs');
   return data;
 }
+async function fetchSearchDocuments(query: string) {
+  const data = await axios.get(`/user/docs?search=${query}`);
+  return data;
+}
 
 const API = {
-  fetchDocuments
+  fetchDocuments,
+  fetchSearchDocuments
 };
 export default API;

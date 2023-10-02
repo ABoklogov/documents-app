@@ -6,18 +6,23 @@ interface State {
   documents: Documents[];
   loading: boolean;
   error: string;
+  loadingSearch: boolean;
+  currentDocument: Documents | null,
 }
 
 export const useDocumentStore = defineStore('DocumentStore', {
   state: (): State => ({
     documents: [],
     loading: false,
-    error: ''
+    error: '',
+    loadingSearch: false,
+    currentDocument: null,
   }),
   // getters: {
   //   doubleCount: (state) => state.count * 2,
   // },
   actions: {
+    // получение всех документов
     async getDocuments() {
       try {
         this.loading = true;
@@ -37,5 +42,29 @@ export const useDocumentStore = defineStore('DocumentStore', {
         }
       }
     },
+    // поиск документов
+    async searchDocuments(query: string) {
+      try {
+        this.loadingSearch = true;
+
+        const { data } = await API.fetchSearchDocuments(query);
+        if (data === undefined) {
+          throw new Error('Server Error!');
+        } else {
+          this.loadingSearch = false;
+          this.error = '';
+          this.documents = data;
+        }
+      } catch (error) {
+        if (error instanceof Error) {
+          this.loadingSearch = false;
+          this.error = error.message;
+        }
+      }
+    },
+    // выбор документа
+    changeDocument(document: Documents) {
+      this.currentDocument = document;
+    }
   },
 })
