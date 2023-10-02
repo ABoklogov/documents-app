@@ -48,7 +48,7 @@ export const useDocumentStore = defineStore('DocumentStore', {
         this.loadingSearch = true;
 
         const { data } = await API.fetchSearchDocuments(query);
-        if (data === undefined) {
+        if (data !== undefined) {
           throw new Error('Server Error!');
         } else {
           this.loadingSearch = false;
@@ -65,6 +65,10 @@ export const useDocumentStore = defineStore('DocumentStore', {
     // выбор документа
     changeDocument(document: Documents) {
       this.currentDocument = document;
+    },
+    // удаление документа
+    deleteDocument(id: number) {
+      this.documents = this.documents.filter(el => el.id !== id);
     }
   },
 })
