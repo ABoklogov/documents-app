@@ -1,22 +1,28 @@
 <template>
   <div class="document-list-wrapper">
     <h2>Результаты</h2>
-    <ul class="document-list">
+    <ul v-if="documents.length > 0" class="document-list">
       <li
         v-for="document in documents"
         :key="document.id"
         class="document-list__item"
         @click="changeDocument(document)"
+        :style="
+          document.id === currentDocument?.id
+            ? 'background-color: #0D6EFD'
+            : null
+        "
       >
         <DocumentItem :document="document" />
       </li>
     </ul>
+    <span v-else>Ничего не найдено</span>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { mapActions } from "pinia";
+import { mapActions, mapState } from "pinia";
 import { useDocumentStore } from "@/stores/DocumentStore";
 import DocumentItem from "@/components/DocumentItem.vue";
 
@@ -29,6 +35,9 @@ export default defineComponent({
     documents: {
       type: Array,
     },
+  },
+  computed: {
+    ...mapState(useDocumentStore, { currentDocument: "currentDocument" }),
   },
   methods: {
     ...mapActions(useDocumentStore, ["changeDocument"]),

@@ -38,6 +38,7 @@ export default defineComponent({
     justify-content: center;
     width: 70px;
     height: 70px;
+    background-color: #fff;
   }
   &__content {
     width: 100%;

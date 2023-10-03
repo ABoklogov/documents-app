@@ -15,6 +15,9 @@
     </div>
     <div class="content__right">
       <DocumentCard v-if="document" :document="document" />
+      <div v-else class="content__right-text">
+        <span>Выберите документ, чтобы посмотреть его содержиое</span>
+      </div>
     </div>
     <PrimeToast />
   </div>
@@ -36,16 +39,19 @@ export default defineComponent({
     DocumentList,
     DocumentCard,
   },
-  updated() {
+  setup() {
     const toast = useToast();
-    if (this.error) {
-      toast.add({
-        severity: "error",
-        summary: "Error Message",
-        detail: this.error,
-        life: 3000,
-      });
-    }
+    const store = useDocumentStore();
+    store.$subscribe((mutation, state) => {
+      if (state.error) {
+        toast.add({
+          severity: "error",
+          summary: "Error Message",
+          detail: state.error,
+          life: 3000,
+        });
+      }
+    });
   },
   computed: {
     ...mapState(useDocumentStore, {
@@ -82,6 +88,12 @@ export default defineComponent({
   &__right {
     width: 75%;
     padding: 30px;
+  }
+  &__right-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
   }
 }
 </style>

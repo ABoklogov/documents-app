@@ -18,9 +18,6 @@ export const useDocumentStore = defineStore('DocumentStore', {
     loadingSearch: false,
     currentDocument: null,
   }),
-  // getters: {
-  //   doubleCount: (state) => state.count * 2,
-  // },
   actions: {
     // получение всех документов
     async getDocuments() {
@@ -48,7 +45,7 @@ export const useDocumentStore = defineStore('DocumentStore', {
         this.loadingSearch = true;
 
         const { data } = await API.fetchSearchDocuments(query);
-        if (data !== undefined) {
+        if (data === undefined) {
           throw new Error('Server Error!');
         } else {
           this.loadingSearch = false;
