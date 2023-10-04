@@ -87,7 +87,7 @@ export default defineComponent({
     &__input {
       font-size: 14px;
       padding: 16px 24px;
-      width: auto;
+      width: 240px;
     }
   }
 }
