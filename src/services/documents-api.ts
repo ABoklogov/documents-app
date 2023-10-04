@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://68.183.212.124:3000';
+axios.defaults.baseURL = process.env.VUE_APP_SERVICE_URL;
 
 async function fetchDocuments() {
   const data = await axios.get('/user/docs');

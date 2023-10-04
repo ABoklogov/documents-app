@@ -6,7 +6,7 @@ import InputText from 'primevue/inputtext'
 import Button from 'primevue/button'
 import Toast from 'primevue/toast'
 import ProgressSpinner from 'primevue/progressspinner'
-import ToastService from 'primevue/toastservice';
+import ToastService from 'primevue/toastservice'
 
 import 'primevue/resources/themes/saga-green/theme.css'
 import 'primeicons/primeicons.css'

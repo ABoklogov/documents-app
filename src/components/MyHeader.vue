@@ -26,7 +26,6 @@ export default defineComponent({
     color: #000;
   }
 }
-
 @media screen and (min-width: 320px) {
   .header {
     &__title {

@@ -24,9 +24,9 @@
       </div>
       <div class="document-card__discription">
         <span class="document-card__discription-title">Описание:</span>
-        <span class="document-card__discription-text">{{
-          document.description
-        }}</span>
+        <span class="document-card__discription-text">
+          {{ document.description }}
+        </span>
       </div>
     </div>
   </div>
@@ -112,7 +112,6 @@ export default defineComponent({
     }
   }
 }
-
 @media screen and (min-width: 1100px) {
   .document-card {
     flex-direction: row;

@@ -43,6 +43,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .document-list-wrapper {
   height: 100%;
+
   &__title {
     margin: 0;
   }
@@ -71,7 +72,6 @@ export default defineComponent({
     }
   }
 }
-
 @media screen and (min-width: 320px) {
   .document-list-wrapper__title {
     font-size: 14px;

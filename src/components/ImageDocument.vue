@@ -27,7 +27,6 @@ export default defineComponent({
   align-items: center;
   border: 1px solid #e0e0e0;
 }
-
 @media screen and (min-width: 320px) {
   .image {
     width: 100%;
