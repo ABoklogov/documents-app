@@ -19,8 +19,13 @@ export default defineComponent({
   font-family: Montserrat, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 400;
   line-height: normal;
+  color: #6c757d;
+}
+h2 {
+  color: #000;
 }
 </style>

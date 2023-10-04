@@ -61,11 +61,16 @@ export const useDocumentStore = defineStore('DocumentStore', {
     },
     // выбор документа
     changeDocument(document: Documents) {
-      this.currentDocument = document;
+      if (this.currentDocument?.id === document.id) {
+        this.currentDocument = null;
+      } else {
+        this.currentDocument = document;
+      }
     },
     // удаление документа
     deleteDocument(id: number) {
       this.documents = this.documents.filter(el => el.id !== id);
+      this.currentDocument = null;
     }
   },
 })

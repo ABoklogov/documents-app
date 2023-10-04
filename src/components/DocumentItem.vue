@@ -8,9 +8,11 @@
       />
     </div>
 
-    <div class="document-item__content">
-      <span>{{ document.name }}</span>
-      <span>12 MB</span>
+    <div class="document-item__content" :style="styleContent">
+      <span class="document-item__content-name" :style="styleName">
+        {{ document.name }}
+      </span>
+      <span :style="styleText">12 MB</span>
     </div>
   </div>
 </template>
@@ -23,6 +25,26 @@ export default defineComponent({
   props: {
     document: {
       type: Object,
+    },
+    currentDocument: {
+      type: Object,
+    },
+  },
+  computed: {
+    styleContent() {
+      return this.document?.id === this.currentDocument?.id
+        ? "background-color: #0D6EFD"
+        : null;
+    },
+    styleName() {
+      return this.document?.id === this.currentDocument?.id
+        ? "color: #fff"
+        : "color: #000";
+    },
+    styleText() {
+      return this.document?.id === this.currentDocument?.id
+        ? "color: #fff"
+        : "color: #6c757d";
     },
   },
 });
@@ -39,13 +61,20 @@ export default defineComponent({
     width: 70px;
     height: 70px;
     background-color: #fff;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
   }
   &__content {
     width: 100%;
     padding: 15px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
   }
   &__content span {
     display: block;
+  }
+  &__content-name {
+    margin-bottom: 6px;
   }
 }
 </style>

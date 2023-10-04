@@ -10,7 +10,11 @@
           <PrimeSpiner />
         </div>
 
-        <DocumentList v-else :documents="documents" />
+        <DocumentList
+          v-else
+          :documents="documents"
+          class="content-list-position"
+        />
       </div>
     </div>
     <div class="content__right">
@@ -70,13 +74,7 @@ export default defineComponent({
   border-radius: 10px;
   background: #fdfdfd;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
-  height: 850px;
 
-  &__left {
-    border-right: 1px solid #e0e0e0;
-    width: 25%;
-    padding: 27px 20px;
-  }
   &__left {
     height: 100%;
   }
@@ -85,15 +83,55 @@ export default defineComponent({
     min-height: 200px;
     height: 85%;
   }
-  &__right {
-    width: 75%;
-    padding: 30px;
-  }
   &__right-text {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
+  }
+}
+.content-list-position {
+  margin-top: 29px;
+}
+@media screen and (min-width: 320px) {
+  .content {
+    flex-direction: column;
+    height: auto;
+
+    &__left {
+      width: 100%;
+      padding: 15px 10px;
+    }
+    &__right {
+      width: 100%;
+      padding: 10px;
+    }
+  }
+}
+@media screen and (min-width: 600px) {
+  .content {
+    &__left {
+      padding: 20px 15px;
+    }
+    &__right {
+      padding: 20px;
+    }
+  }
+}
+@media screen and (min-width: 1100px) {
+  .content {
+    flex-direction: row;
+    height: 850px;
+
+    &__left {
+      width: 25%;
+      padding: 27px 20px;
+      border-right: 1px solid #e0e0e0;
+    }
+    &__right {
+      width: 75%;
+      padding: 30px;
+    }
   }
 }
 </style>
