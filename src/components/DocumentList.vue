@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="document-list-wrapper">
     <h2 class="document-list-wrapper__title">Результаты</h2>
     <ul v-if="documents.length > 0" class="document-list">
@@ -96,4 +96,4 @@ export default defineComponent({
     overflow-y: auto;
   }
 }
-</style>
+</style> -->

@@ -1,7 +1,7 @@
 <template>
   <div class="content">
     <div class="content__left">
-      <FormSearch />
+      <!-- <FormSearch /> -->
       <div class="content__document-list">
         <div
           v-if="loading"
@@ -10,28 +10,28 @@
           <PrimeSpiner />
         </div>
 
-        <DocumentList
+        <!-- <DocumentList
           v-else
           :documents="documents"
           class="content-list-position"
-        />
+        /> -->
       </div>
     </div>
-    <div class="content__right">
+    <!-- <div class="content__right">
       <DocumentCard v-if="document" :document="document" />
       <div v-else class="content__right-text">
         <span>Выберите документ, чтобы посмотреть его содержиое</span>
       </div>
-    </div>
+    </div> -->
     <PrimeToast />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import FormSearch from "@/components/FormSearch.vue";
-import DocumentList from "@/components/DocumentList.vue";
-import DocumentCard from "@/components/DocumentCard.vue";
+// import FormSearch from "@/components/FormSearch.vue";
+// import DocumentList from "@/components/DocumentList.vue";
+// import DocumentCard from "@/components/DocumentCard.vue";
 import { mapState } from "pinia";
 import { useDocumentStore } from "@/stores/DocumentStore";
 import { useToast } from "primevue/usetoast";
@@ -39,9 +39,9 @@ import { useToast } from "primevue/usetoast";
 export default defineComponent({
   name: "MainContent",
   components: {
-    FormSearch,
-    DocumentList,
-    DocumentCard,
+    // FormSearch,
+    // DocumentList,
+    // DocumentCard,
   },
   setup() {
     const toast = useToast();

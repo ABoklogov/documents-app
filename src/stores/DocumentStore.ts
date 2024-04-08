@@ -24,53 +24,55 @@ export const useDocumentStore = defineStore('DocumentStore', {
       try {
         this.loading = true;
 
-        const { data } = await API.fetchDocuments();
-        if (data === undefined) {
-          throw new Error('Server Error!');
-        } else {
-          this.loading = false;
-          this.error = '';
-          this.documents = data;
-        }
+        console.log("🚀 ~ getDocuments ~ API:", API)
+        const { data } = await API.fetchDocumentsList();
+        console.log("🚀 ~ getDocuments ~ data:", data)
+        // if (data === undefined) {
+        //   throw new Error('Server Error!');
+        // } else {
+        //   this.loading = false;
+        //   this.error = '';
+        //   this.documents = data;
+        // }
       } catch (error) {
-        if (error instanceof Error) {
-          this.loading = false;
-          this.error = error.message;
-        }
+        // if (error instanceof Error) {
+        //   this.loading = false;
+        //   this.error = error.message;
+        // }
       }
     },
     // поиск документов
-    async searchDocuments(query: string) {
-      try {
-        this.loadingSearch = true;
+    // async searchDocuments(query: string) {
+    //   try {
+    //     this.loadingSearch = true;
 
-        const { data } = await API.fetchSearchDocuments(query);
-        if (data === undefined) {
-          throw new Error('Server Error!');
-        } else {
-          this.loadingSearch = false;
-          this.error = '';
-          this.documents = data;
-        }
-      } catch (error) {
-        if (error instanceof Error) {
-          this.loadingSearch = false;
-          this.error = error.message;
-        }
-      }
-    },
+    //     const { data } = await API.fetchSearchDocuments(query);
+    //     if (data === undefined) {
+    //       throw new Error('Server Error!');
+    //     } else {
+    //       this.loadingSearch = false;
+    //       this.error = '';
+    //       this.documents = data;
+    //     }
+    //   } catch (error) {
+    //     if (error instanceof Error) {
+    //       this.loadingSearch = false;
+    //       this.error = error.message;
+    //     }
+    //   }
+    // },
     // выбор документа
-    changeDocument(document: Documents) {
-      if (this.currentDocument?.id === document.id) {
-        this.currentDocument = null;
-      } else {
-        this.currentDocument = document;
-      }
-    },
+    // changeDocument(document: Documents) {
+    //   if (this.currentDocument?.id === document.id) {
+    //     this.currentDocument = null;
+    //   } else {
+    //     this.currentDocument = document;
+    //   }
+    // },
     // удаление документа
-    deleteDocument(id: number) {
-      this.documents = this.documents.filter(el => el.id !== id);
-      this.currentDocument = null;
-    }
+    // deleteDocument(id: number) {
+    //   this.documents = this.documents.filter(el => el.id !== id);
+    //   this.currentDocument = null;
+    // }
   },
 })

@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="form-search">
     <h2 class="form-search__title">Поиск документа</h2>
     <span class="p-input-icon-right form-search__input-box">
@@ -91,4 +91,4 @@ export default defineComponent({
     }
   }
 }
-</style>
+</style> -->

@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="document-card">
     <ImageDocument :image="document.image" :name="document.name" />
     <div class="document-card__content">
@@ -133,4 +133,4 @@ export default defineComponent({
     }
   }
 }
-</style>
+</style> -->
